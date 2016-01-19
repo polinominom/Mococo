@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="easy_quests">
+        <item>Easy Quest 1</item>
+        <item>Easy Quest 2</item>
+        <item>Easy Quest 3</item>
+        <item>Easy Quest 4</item>
+        <item>Easy Quest 5</item>
+        <item>Easy Quest 6</item>
+        <item>Easy Quest 7</item>
+        <item>Easy Quest 8</item>
+    </string-array>
+
+    <string-array name="medium_quests">
+        <item>Medium Quest 1</item>
+        <item>Medium Quest 2</item>
+        <item>Medium Quest 3</item>
+        <item>Medium Quest 4</item>
+        <item>Medium Quest 5</item>
+        <item>Medium Quest 6</item>
+        <item>Medium Quest 7</item>
+        <item>Medium Quest 8</item>
+    </string-array>
+
+    <string-array name="hard_quests">
+        <item>Hard Quest 1</item>
+        <item>Hard Quest 2</item>
+        <item>Hard Quest 3</item>
+        <item>Hard Quest 4</item>
+        <item>Hard Quest 5</item>
+        <item>Hard Quest 6</item>
+        <item>Hard Quest 7</item>
+        <item>Hard Quest 8</item>
+    </string-array>
+
+    <string-array name="exceptional_quests">
+        <item>Exceptional Quest 1</item>
+        <item>Exceptional Quest 2</item>
+        <item>Exceptional Quest 3</item>
+        <item>Exceptional Quest 4</item>
+        <item>Exceptional Quest 5</item>
+        <item>Exceptional Quest 6</item>
+        <item>Exceptional Quest 7</item>
+        <item>Exceptional Quest 8</item>
+    </string-array>
+
+    <string-array name="legendary_quests">
+        <item>Legendary Quest 1</item>
+        <item>Legendary Quest 2</item>
+        <item>Legendary Quest 3</item>
+        <item>Legendary Quest 4</item>
+        <item>Legendary Quest 5</item>
+        <item>Legendary Quest 6</item>
+        <item>Legendary Quest 7</item>
+        <item>Legendary Quest 8</item>
+    </string-array>
+
+
+</resources>

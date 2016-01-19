@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="armor_shop">
+        <item>Light Helmet</item>
+        <item>Light Shoulder</item>
+        <item>Light Gloves</item>
+        <item>Light Leggings</item>
+        <item>Light Chest</item>
+
+        <item>Medium Helmet</item>
+        <item>Medium Shoulder</item>
+        <item>Medium Gloves</item>
+        <item>Medium Leggings</item>
+        <item>Medium Chest</item>
+
+        <item>Heavy Helmet</item>
+        <item>Heavy Shoulder</item>
+        <item>Heavy Gloves</item>
+        <item>Heavy Leggings</item>
+        <item>Heavy Chest</item>
+
+        <item>Legendary Helmet</item>
+        <item>Legendary Shoulder</item>
+        <item>Legendary Gloves</item>
+        <item>Legendary Leggings</item>
+        <item>Legendary Chest</item>
+    </string-array>
+</resources>

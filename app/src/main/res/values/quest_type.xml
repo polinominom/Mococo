@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="quest_type">
+        <item>Easy</item>
+        <item>Medium</item>
+        <item>Hard</item>
+        <item>Exceptional</item>
+        <item>Legendary</item>
+    </string-array>
+</resources>

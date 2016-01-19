@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="floors">
+        <item>Floor 1</item>
+        <item>Floor 2</item>
+        <item>Floor 3</item>
+        <item>Floor 4</item>
+        <item>Floor 5</item>
+        <item>Floor 6</item>
+        <item>Floor 7</item>
+        <item>Floor 8</item>
+        <item>Floor 9</item>
+        <item>Floor 10</item>
+        <item>Floor 11</item>
+        <item>Floor 12</item>
+        <item>Floor 13</item>
+        <item>Floor 14</item>
+        <item>Floor 15</item>
+        <item>Floor 16</item>
+        <item>Floor 17</item>
+        <item>Floor 18</item>
+        <item>Floor 19</item>
+        <item>Floor 20</item>
+    </string-array>
+
+
+</resources>

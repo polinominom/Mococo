@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Mococo</string>
+    <string name="play_button_name">Play</string>
+    <string name="option_button_name">OPTION</string>
+    <string name="howtoplay_button_name">How to play</string>
+    <string name="about_button_name">About</string>
+    <string name="edit_profile_name_text_view">Edit profile name</string>
+    <string name="edit_race_text_view_name">Edit Race</string>
+    <string name="confirm_option_button_name">CONFIRM</string>
+    <string name="cancel_option_button_name">CANCEL</string>
+    <string name="player_name">Player</string>
+    <string name="town_button_name">Town</string>
+    <string name="profile_button_name">PROFILE</string>
+    <string name="dungeon_button_name">Dungeon</string>
+    <string name="back_menu_button_name">Back To the Menu</string>
+    <string name="back_to_map_button_name">Back To Map</string>
+    <string name="shop_button_name">Shop</string>
+    <string name="quest_button_name">Quests</string>
+    <string name="upgrade_button_name">Upgrade</string>
+    <string name="shop_list_text_view_name">Shop List</string>
+    <string name="shop_type_spinner_text_view_name">Choose Type</string>
+    <string name="shop_weapon_name">Weapon</string>
+    <string name="shop_armor_name">Armor</string>
+    <string name="choose_floor_text_name">Choose Floor</string>
+    <string name="monster_list_text_name">Monster List</string>
+    <string name="map_name">Map</string>
+    <string name="buy_button_name">Buy</string>
+    <string name="town_name">Town</string>
+    <string name="player_status_name">Player Status</string>
+    <string name="str_status_name">Strength:</string>
+    <string name="int_status_name">Intelligent:</string>
+    <string name="luck_status_name">Luck:</string>
+    <string name="choose_shop_type_name">Choose Shop Type</string>
+    <string name="shop_list_name">Shop List</string>
+    <string name="monster_status_name">Monster Status</string>
+    <string name="player_status_dungeon_name">Player Status</string>
+    <string name="attack_button_name">Attack</string>
+    <string name="choose_quest_type_name">Choose Quest Type</string>
+    <string name="quest_list_name">Quest List</string>
+    <string name="take_quest_text_name">Take</string>
+    <string name="heal_name">Heal</string>
+    <string name="full_health_buy_text_view_name">Full Health: 1 Gold</string>
+    <string name="upgrade_points_name">Upgrade Points: </string>
+    <string name="asfdgadg">Upgrade Points: </string>
+
+</resources>

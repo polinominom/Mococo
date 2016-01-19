@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="weapon_shop">
+        <item>Light Sword</item>
+        <item>Light Greatsword</item>
+        <item>Light Bow</item>
+        <item>Light Crossbow</item>
+        <item>Light Double Dagger</item>
+        <item>Light Magic Staff</item>
+        <item>Light Spell Book</item>
+
+        <item>Medium Sword</item>
+        <item>Medium Greatsword</item>
+        <item>Medium Bow</item>
+        <item>Medium Crossbow</item>
+        <item>Medium Double Dagger</item>
+        <item>Medium Magic Staff</item>
+        <item>Medium Spell Book</item>
+
+        <item>Heavy Sword</item>
+        <item>Heavy Greatsword</item>
+        <item>Heavy Bow</item>
+        <item>Heavy Crossbow</item>
+        <item>Heavy Double Dagger</item>
+        <item>Heavy Magic Staff</item>
+        <item>Heavy Spell Book</item>
+
+        <item>Legendary Sword</item>
+        <item>Legendary Greatsword</item>
+        <item>Legendary Bow</item>
+        <item>Legendary Crossbow</item>
+        <item>Legendary Double  Dagger</item>
+        <item>Legendary Magic Staff</item>
+        <item>Legendary Spell Book</item>
+    </string-array>
+</resources>
