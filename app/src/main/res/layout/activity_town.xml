@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player status"
+        android:id="@+id/town_player_status_text_id"
+        android:textStyle="italic"
+        android:layout_marginBottom="55dp"/>
+
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="55dp"
+        android:gravity="center">
+
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/upgrade_button_name"
+            android:id="@+id/upgrade_button_id"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/upgrade_image"
+            android:textColor="@color/reddy"
+            android:onClick="onUpgradeButtonClick"/>
+
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/quest_button_name"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/quest_icon_3"
+            android:textColor="@color/reddy"
+            android:onClick="onQuestButtonClick"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+        android:gravity="center">
+
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/shop_button_name"
+            android:layout_marginRight="30dp"
+            android:textColor="@color/reddy"
+            android:background="@drawable/shop_icon"
+            android:onClick="onShopButtonClick"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/back_to_map_button_name"
+            android:background="@drawable/map3"
+            android:textColor="@color/reddy"
+            android:layout_marginLeft="30dp"
+            android:onClick="onBackToMapFromProfileClick"/>
+
+    </LinearLayout>
+
+</LinearLayout>

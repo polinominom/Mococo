@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plyer status"
+        android:id="@+id/map_player_status_text_id"
+        android:layout_marginBottom="55dp"/>
+
+    -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="55dp"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/reddy"
+            android:text="@string/town_button_name"
+            android:id="@+id/town_button_id"
+            android:layout_marginRight="30dp"
+            android:onClick="onTownButtonClick"
+            android:background="@drawable/town_image" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/profile_button_name"
+            android:layout_marginLeft="30dp"
+            android:onClick="onProfileButtonClick"
+            android:background="@drawable/profile3"
+            android:textColor="@color/reddy"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="55dp"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/dungeon_button_name"
+            android:layout_marginRight="30dp"
+            android:onClick="onDungeonButtonClick"
+            android:textColor="@color/reddy"
+            android:background="@drawable/dungeon5" />
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:text="@string/back_menu_button_name"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/back_to_menu_button_id"
+            android:onClick="onBackToMenuButtonClick"
+            android:background="@drawable/menu"
+            android:textColor="@color/reddy" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
