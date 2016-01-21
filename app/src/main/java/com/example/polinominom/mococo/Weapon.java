@@ -141,11 +141,17 @@ public class Weapon implements Serializable {
         String s = "";
 
         s += "\n\nName: "+getName();
-        s += "\nDamage: "+getPureDamage();
         s += "\nType: "+getType();
-        s += "\nGold: "+getGold();
+        s += "\nDamage: "+getPureDamage();
+        s += "\n\nGold: "+getGold();
 
         return s;
+
+    }
+
+    public static int findPrice(String name)
+    {
+        return new Weapon(name).getGold();
 
     }
 

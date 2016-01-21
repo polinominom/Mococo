@@ -43,28 +43,6 @@ public class ProfileActivity extends Activity {
 
     }
 
-    public void onBackToMapFromProfileClick(View view) {
-
-        Intent goingBackToMap = new Intent(this, PlayActivity.class);
-        goingBackToMap.putExtra("Game_object",game);
-        startActivity(goingBackToMap);
-        finish();
-    }
-
-    public void onBackToTownFromProfileClick(View view) {
-        Intent goingBackToTown = new Intent(this,TownActivity.class);
-        goingBackToTown.putExtra("Game_object",game);
-        startActivity(goingBackToTown);
-        finish();
-    }
-
-    public void onBackToDungeonFromProfileClick(View view) {
-        Intent goingToDungeon = new Intent(this, DungeonActivity.class);
-        goingToDungeon.putExtra("Game_object",game);
-        startActivity(goingToDungeon);
-        finish();
-    }
-
     public void onHealClick(View view) {
         Player p = game.getPlayer();
         if(p.getGold()>=1)
@@ -89,5 +67,43 @@ public class ProfileActivity extends Activity {
         }
 
 
+    }
+
+    public void onProfileButtonClick(View view) {
+        //empty
+
+    }
+
+
+    public void onDungeonButtonClick(View view) {
+        Intent goingDungeon = new Intent(this,DungeonActivity.class);
+        goingDungeon.putExtra("Game_object",game);
+        startActivity(goingDungeon);
+        finish();
+    }
+
+    public void onQuestButtonClick(View view) {
+
+        Intent goingQuest = new Intent(this,QuestActivity.class);
+        goingQuest.putExtra("Game_object",game);
+        startActivity(goingQuest);
+        finish();
+    }
+
+    public void onShopButtonClick(View view) {
+
+        Intent goingShop = new Intent(this,ShopActivity.class);
+        goingShop.putExtra("Game_object",game);
+        startActivity(goingShop);
+        finish();
+
+    }
+
+    public void onUpgradeButtonClick(View view) {
+
+        Intent goingUpgrade = new Intent(this,UpgradeActivity.class);
+        goingUpgrade.putExtra("Game_object",game);
+        startActivity(goingUpgrade);
+        finish();
     }
 }

@@ -47,32 +47,6 @@ public class UpgradeActivity extends Activity{
         Log.v("DEBUG", "inUpgradeActivity: " + isGameCame);
     }
 
-    public void onBackToMapFromUpgradeClick(View view) {
-
-        Intent goingBackToTownActivity = new Intent(this, PlayActivity.class);
-        goingBackToTownActivity.putExtra("Game_object",game);
-        startActivity(goingBackToTownActivity);
-        finish();
-    }
-
-    public void onBackToTownFromUpgradeClick(View view) {
-
-        Intent goingBackToTownActivity = new Intent(this, TownActivity.class);
-        goingBackToTownActivity.putExtra("Game_object",game);
-        startActivity(goingBackToTownActivity);
-        finish();
-
-    }
-
-
-    public void onBackToProfileFromUpgradeClick(View view) {
-
-        Intent goingBackToTownActivity = new Intent(this, ProfileActivity.class);
-        goingBackToTownActivity.putExtra("Game_object",game);
-        startActivity(goingBackToTownActivity);
-        finish();
-
-    }
 
     public void onBuyStrClick(View view){
         Player p = game.getPlayer();
@@ -103,6 +77,7 @@ public class UpgradeActivity extends Activity{
         }
 
     }
+
     public void onBuyLuckClick(View view){
         Player p = game.getPlayer();
         int uPoint = p.getUpgradePoint();
@@ -118,4 +93,37 @@ public class UpgradeActivity extends Activity{
 
     }
 
+    public void onProfileButtonClick(View view) {
+        Intent goingProfile = new Intent(this, ProfileActivity.class);
+        goingProfile.putExtra("Game_object",game);
+        startActivity(goingProfile);
+        finish();
+    }
+
+
+    public void onDungeonButtonClick(View view) {
+        Intent goingDungeon = new Intent(this, DungeonActivity.class);
+        goingDungeon.putExtra("Game_object",game);
+        startActivity(goingDungeon);
+        finish();
+    }
+
+    public void onQuestButtonClick(View view) {
+        Intent goingQuest = new Intent(this, QuestActivity.class);
+        goingQuest.putExtra("Game_object",game);
+        startActivity(goingQuest);
+        finish();
+    }
+
+
+    public void onShopButtonClick(View view) {
+        Intent goingShop = new Intent(this, ShopActivity.class);
+        goingShop.putExtra("Game_object",game);
+        startActivity(goingShop);
+        finish();
+    }
+
+    public void onUpgradeButtonClick(View view) {
+        //empty
+    }
 }

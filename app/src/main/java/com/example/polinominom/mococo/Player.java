@@ -129,10 +129,17 @@ public class Player implements Serializable {
         String s = "Player Status";
 
         s +="\n\nName: " + getName();
-        s +="\nHealth: "+getCurrentHealth()+"/" + getMaxHealth();
         s +="\nLevel: "+getLevel();
+        s +="\nHealth: "+getCurrentHealth()+"/" + getMaxHealth();
         s +="\nExp: " +getExp();
         s +="\nGold: "+getGold();
+
+        s +="\n\nPhysical Damage: "+getPhysicalDamage();
+        s +="\nPhysical Defence :"+getPhysicalDefence();
+        s +="\nMagical Damage: "+getMagicalDamage();
+        s +="\nMagical Defence "+getMagicalDamage();
+
+        s +="\n\nCurrent Quest "+Quest.info(getQuest());
 
         return  s;
     }
@@ -143,12 +150,12 @@ public class Player implements Serializable {
         Armor armor = getArmorByType(type);
 
         if(armor != null){
-            s += "Your Armor";
+            s += "\nType: Armor:";
             s += armor.shopStatus();
         }
         else
         {
-            s += "You don't have this type of armor yet";
+            s += "\nDon't have this armor type yet.";
             s += "\n\nName: -";
             s += "\nHealth: -";
             s += "\nDefence: -";
@@ -163,16 +170,15 @@ public class Player implements Serializable {
         String s = "";
 
         if(weapon != null){
-            s += "Your Weapon";
+            s += "\nType: Weapon";
             s += weapon.shopStatus();
         }
         else
         {
-            s += "You don't have weapon yet";
+            s += "\nYou don't have weapon yet";
             s += "\n\nName: "+"-";
-            s += "\nDamage: "+"-";
             s += "\nType: "+"-";
-            s += "\nGold: "+"-";
+            s += "\nDamage: "+"-";
         }
 
         return s;

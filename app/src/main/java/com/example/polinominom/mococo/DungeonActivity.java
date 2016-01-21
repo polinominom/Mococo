@@ -2,6 +2,7 @@ package com.example.polinominom.mococo;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.camera2.DngCreator;
 import android.os.Bundle;
@@ -37,19 +38,20 @@ public class DungeonActivity extends Activity {
     private ListAdapter floorListAdapter;
     private ListView monsterListView;
 
+    private Context context;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dungeon);
-
         getGameFromCalledActivity();
-        displayPlayerStatus();
+
+        context = this;
 
         addItemsToFloorSpinner();
         addListenerToFloorSpinner();
-
 
 
 
@@ -111,9 +113,8 @@ public class DungeonActivity extends Activity {
     {
         //set selected monster null
         //and clear info area
-        displaySelectedMonsterStatus("", false);
         game.initializeFloorMonsters(currentFloor);
-        createListView();
+        updateListView();
 
 
     }
@@ -131,7 +132,7 @@ public class DungeonActivity extends Activity {
         currentFloor++;
     }
 
-    public void createListView()
+    public void updateListView()
     {
         //first clear all monsters
         floorMonsters = game.getFloorMonsters();
@@ -169,19 +170,49 @@ public class DungeonActivity extends Activity {
 
                 pos = position;
                 String monsterPicked = String.valueOf(parent.getItemAtPosition(position));
-                displaySelectedMonsterStatus(monsterPicked, true);
-                displayPlayerStatus();
+
+                //when monster picked start new acticity
+                selectedMonster = createMonsterFromSelectedName(monsterPicked);
+
+                Intent attack = new Intent(context, AttackActivity.class);
+                attack.putExtra("Game_object",game);
+                attack.putExtra("Monster_object",selectedMonster);
+                attack.putExtra("Current_floor",""+currentFloor);
+                attack.putExtra("Monster_position",""+pos);
+
+                final int result = 1;
+
+                startActivityForResult(attack,result);
 
             }
         });
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(data == null) {
+
+            //log message end return
+            Log.v("DungeonActivity","onActivityResult data null!");
+            return;
+        }
+
+        game = (Game)data.getSerializableExtra("Game_object");
+        updateListView();
+
+
+
+
+    }
+
     public void displayPlayerStatus()
     {
-        Player p = game.getPlayer();
-        TextView playerStatusTextView = (TextView) findViewById(R.id.player_status_dungeon_text_id);
-        playerStatusTextView.setText(p.dungeonStatus());
+        //Player p = game.getPlayer();
+        //TextView playerStatusTextView = (TextView) findViewById(R.id.player_status_dungeon_text_id);
+        //playerStatusTextView.setText(p.dungeonStatus());
     }
 
     public void displaySelectedMonsterStatus(String monsterPicked,boolean isDisplay)
@@ -204,42 +235,6 @@ public class DungeonActivity extends Activity {
         }
     }
 
-    public void onBackToMapFromDungeonClick(View view) {
-
-
-        Intent goingBackToMap = new Intent(this, PlayActivity.class);
-        goingBackToMap.putExtra("Game_object",game);
-
-        startActivity(goingBackToMap);
-        finish();
-    }
-
-    public void onBackToTownFromDungeonClick(View view) {
-
-        Intent goingTown = new Intent(this, TownActivity.class);
-        goingTown.putExtra("Game_object",game);
-
-        startActivity(goingTown);
-        finish();
-    }
-
-    public void onBackToProfileFromDungeonClick(View view) {
-
-        Intent goingProfile = new Intent(this, ProfileActivity.class);
-        goingProfile.putExtra("Game_object",game);
-
-        startActivity(goingProfile);
-        finish();
-
-    }
-
-    public void onBackToQuestFromDungeonClick(View view) {
-        Intent goingToQuest = new Intent(this,QuestActivity.class);
-        goingToQuest.putExtra("Game_object",game);
-
-        startActivity(goingToQuest);
-        finish();
-    }
 
     public Monster createMonsterFromSelectedName(String name)
     {
@@ -267,86 +262,47 @@ public class DungeonActivity extends Activity {
 
     }
 
-    public void onAttackButtonClick(View view) {
 
-        if(selectedMonster == null)
-        {
-            String message = "You have to choose a monster for attack.";
-            Toast.makeText(DungeonActivity.this,message, Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else
-        {
-            //begin the attack;
-            short attackStatus = game.attack(selectedMonster);
+    public void onProfileButtonClick(View view)
+    {
+        Intent goingProfile = new Intent(this,ProfileActivity.class);
+        goingProfile.putExtra("Game_object",game);
 
-            if(attackStatus == -1){
-
-                //game over create new game reset player and send through main activity
-                Player p = game.getPlayer();
-                Player newPlayer = new Player(p.getName(),p.getPlayerRace().getName());
-                Game g = new Game(newPlayer);
-
-                DialogFragment myFragment = new DeadDialog(g,this);
-                myFragment.show(getFragmentManager(), "theDialog");
-
-            }
-            else if(attackStatus == 1){
-
-                //player reward
-                Player p = game.getPlayer();
-                p.setExp(p.getExp()+selectedMonster.getExp());
-                p.setGold(p.getGold()+selectedMonster.getGold());
-
-                //quest Update
-                Quest q = p.getQuest();
-                if(q != null)
-                {
-
-                    if(q.getType().equals(selectedMonster.getName()))
-                    {
-                        //monster killed same with quest type
-                        //check if floor ok
-                        if(currentFloor >= q.getKillFloorLimit()){
-                            //decrease kill count
-                            q.decreaseKillCount();
-
-                            //check if quest ended
-                            if(q.getKillCount() == 0)
-                            {
-                                //pass rewards into player
-                                p.setGold(p.getGold() + q.getGoldReward());
-                                p.setExp(p.getExp() + q.getExpReward());
-                                p.setQuest(null);
-
-                                Toast.makeText(DungeonActivity.this,"You've just completed a quest",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                }
-
-                displayPlayerStatus();
-                displaySelectedMonsterStatus("", false);
-
-
-                //delete Monster from list
-                game.getFloorMonsters().remove(pos);
-                createListView();
-            }
-            else if(attackStatus == 0) {
-
-                //no one died, continue.
-                displayPlayerStatus();
-                displayMonsterStatus(selectedMonster);
-            }
-
-        }
+        startActivity(goingProfile);
+        finish();
 
     }
 
-    public void displayMonsterStatus(Monster m)
+    public void onDungeonButtonClick(View view)
     {
-        TextView monsterStatusTextView = (TextView) findViewById(R.id.monster_info_status_area);
-        monsterStatusTextView.setText(Monster.getDungeonStatus(m));
+        //empty
+    }
+
+    public void onQuestButtonClick(View view)
+    {
+        Intent goingQuest = new Intent(this,QuestActivity.class);
+        goingQuest.putExtra("Game_object",game);
+
+        startActivity(goingQuest);
+        finish();
+    }
+
+    public void onShopButtonClick(View view)
+    {
+        Intent goingShop = new Intent(this,ShopActivity.class);
+        goingShop.putExtra("Game_object",game);
+
+        startActivity(goingShop);
+        finish();
+    }
+
+
+    public void onUpgradeButtonClick(View view)
+    {
+        Intent goingUpgrade = new Intent(this,UpgradeActivity.class);
+        goingUpgrade.putExtra("Game_object",game);
+
+        startActivity(goingUpgrade);
+        finish();
     }
 }

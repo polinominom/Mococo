@@ -1,6 +1,7 @@
 package com.example.polinominom.mococo;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +28,8 @@ public class QuestActivity extends Activity {
 
     private ArrayList<Quest> quests;
     private Quest selectedQuest;
-    private Quest currentQuest;
+
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class QuestActivity extends Activity {
         setContentView(R.layout.activity_quest);
 
         getGameFromCalledActivity();
+
+        context = this;
 
         displayCurrentQuest();
         addItemsToDifficultySpinner();
@@ -83,7 +87,7 @@ public class QuestActivity extends Activity {
         emptySelectedQuest();
 
         //create quests by difficulty
-        String[] questNames;
+        final String[] questNames;
         game.createQuests(difficulty);
         quests = game.getQuests();
 
@@ -126,18 +130,42 @@ public class QuestActivity extends Activity {
 
                 //When a quest selected put all information about it into the textView
                 String select = String.valueOf(parent.getItemAtPosition(position));
-
                 //Easy Quest 1, first quest
                 //but actually it is easy quest 0 so decreasing must be done after parse.
                 String[] tokens = select.split("[ ]+");
                 int questNum = Integer.parseInt(tokens[2]) - 1;
+                selectedQuest = game.getQuests().get(questNum);
+
+                //start quest information activity instead of showing information here
+                Intent questInfo = new Intent(context, QuestInfoActivity.class);
+                questInfo.putExtra("Game_object", game);
+                questInfo.putExtra("Quest_selected", selectedQuest);
+                questInfo.putExtra("Quest_number", "" + questNum);
+
+                final int result = 1;
+                startActivityForResult(questInfo, result);
 
 
-                displayCurrentQuest();
-                displaySelectedQuest(questNum);
+                //displayCurrentQuest();
+                //displaySelectedQuest(questNum);
 
             }
         });
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(data == null){
+            Log.v("QuestActivity","NULL DATA!");
+            return;
+        }
+
+        game =(Game)data.getSerializableExtra("Game_object");
+        
+
 
 
     }
@@ -147,7 +175,7 @@ public class QuestActivity extends Activity {
         TextView selectedQuestTextView = (TextView) findViewById(R.id.selected_quest_text_view_id);
 
         //get selected and current quests
-        selectedQuest = game.getQuests().get(questNum);
+
 
         String selectedQuestMessage = "Selected Quest";
         selectedQuestMessage += Quest.info(selectedQuest);
@@ -158,7 +186,7 @@ public class QuestActivity extends Activity {
     public void displayCurrentQuest()
     {
         TextView currentQuestTextView = (TextView) findViewById(R.id.current_quest_text_view_id);
-        currentQuest = game.getPlayer().getQuest();
+        Quest currentQuest = game.getPlayer().getQuest();
 
         String currentQuestMessage = "Current Quest";
         currentQuestMessage += Quest.info(currentQuest);
@@ -172,31 +200,9 @@ public class QuestActivity extends Activity {
         t.setText("");
         selectedQuest = null;
     }
-    public void onBackToMapFromQuestClick(View view) {
-
-        Intent goingMap = new Intent(this, PlayActivity.class);
-        goingMap.putExtra("Game_object",game);
-        startActivity(goingMap);
-        finish();
-
-    }
 
 
-    public void onBackToDungeonFromQuestClick(View view) {
-        Intent goingDungeon = new Intent(this, DungeonActivity.class);
-        goingDungeon.putExtra("Game_object",game);
-        startActivity(goingDungeon);
-        finish();
-    }
-
-    public void onBackToTownFromQuestClick(View view) {
-        Intent goingTown = new Intent(this, TownActivity.class);
-        goingTown.putExtra("Game_object",game);
-        startActivity(goingTown);
-        finish();
-    }
-
-    public void onApplyQuestClick(View view) {
+    public void onTakeButtonClick(View view) {
 
         if(selectedQuest == null)
         {
@@ -209,5 +215,49 @@ public class QuestActivity extends Activity {
             p.setQuest(selectedQuest);
             displayCurrentQuest();
         }
+
+    }
+
+    public void onProfileButtonClick(View view) {
+
+        Intent goingProfile = new Intent(this,ProfileActivity.class);
+        goingProfile.putExtra("Game_object",game);
+
+        startActivity(goingProfile);
+        finish();
+
+    }
+
+
+    public void onDungeonButtonClick(View view) {
+
+        Intent goingDungeon = new Intent(this,DungeonActivity.class);
+        goingDungeon.putExtra("Game_object",game);
+
+        startActivity(goingDungeon);
+        finish();
+    }
+
+    public void onQuestButtonClick(View view) {
+            //empty
+
+    }
+
+    public void onShopButtonClick(View view) {
+
+        Intent goingShop = new Intent(this,ShopActivity.class);
+        goingShop.putExtra("Game_object",game);
+
+        startActivity(goingShop);
+        finish();
+    }
+
+    public void onUpgradeButtonClick(View view) {
+
+        Intent goingUpgrade = new Intent(this,UpgradeActivity.class);
+        goingUpgrade.putExtra("Game_object",game);
+
+        startActivity(goingUpgrade);
+        finish();
     }
 }

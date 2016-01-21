@@ -120,18 +120,20 @@ public class Quest implements Serializable{
         if(q != null)
         {
             s += "\n\nTarget: "+q.getType();
-            s +="\nKill Count: "+q.getKillCount();
-            s +="\nFloor Limit: "+q.getKillFloorLimit();
-            s +="\nExp/Gold rewards: "+q.getExpReward()+"/"+q.getGoldReward();
-            s +="\nDifficulty: "+q.getDifficulty();
+            s += "\n\nKill Count: "+q.getKillCount();
+            s += "\nFloor Limit: "+q.getKillFloorLimit();
+            s += "\n\nExp reward: " +q.getExpReward();
+            s += "\nGold reward: "+q.getGoldReward();
+            s += "\n\nDifficulty: "+q.getDifficulty();
         }
         else
         {
             s += "\n\nTarget: -";
-            s +="\nKill Count: -";
-            s +="\nFloor Limit: -";
-            s +="\nExp/Gold rewards: "+"-/-";
-            s +="\nDifficulty: -";
+            s += "\n\nKill Count: -";
+            s += "\nFloor Limit: -";
+            s += "\n\nExp reward: -";
+            s += "\nGold reward: -";
+            s += "\n\nDifficulty: -";
         }
 
         return s;

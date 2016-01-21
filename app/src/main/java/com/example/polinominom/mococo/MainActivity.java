@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public void onPlayButtonClick(View view) {
 
         Log.v("play",game.getPlayer().getName());
-        Intent goingToPlayActivity = new Intent(this, PlayActivity.class);
+        Intent goingToPlayActivity = new Intent(this, ProfileActivity.class);
 
         goingToPlayActivity.putExtra("Game_object",game);
 

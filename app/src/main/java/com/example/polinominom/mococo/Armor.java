@@ -122,4 +122,9 @@ public class Armor implements Serializable {
     public int getDefenceBonus() {
         return defenceBonus;
     }
+
+    public static int findPrice(String name)
+    {
+        return new Armor(name).getPrice();
+    }
 }

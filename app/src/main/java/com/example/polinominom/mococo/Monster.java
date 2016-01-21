@@ -167,7 +167,10 @@ public class Monster implements Serializable {
         s+="\nHealth: "     +m.getCurrentHealth()+"/"+m.getMaxHealth();
         s+="\nExp: "        +m.getExp();
         s+="\nGold: "       +m.getGold();
-
+        s +="\n\nPhysical Damage: "+m.getPhysicalDamage();
+        s +="\nPhysical Defence :"+m.getPhysicalDefence();
+        s +="\nMagical Damage: "+m.getMagicalDamage();
+        s +="\nMagical Defence "+m.getMagicalDamage();
         return s;
     }
 
