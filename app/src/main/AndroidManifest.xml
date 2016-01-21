@@ -45,15 +45,26 @@
             android:theme="@style/AppTheme"/>
 
         <activity android:name=".ShopActivity"
-            android:label="Town"
+            android:label="Shop"
             android:theme="@style/AppTheme"/>
 
         <activity android:name=".QuestActivity"
-            android:label="Town"
+            android:label="Quest"
             android:theme="@style/AppTheme"/>
 
         <activity android:name=".UpgradeActivity"
-            android:label="Town"
+            android:label="Upgrade"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".AttackActivity"
+            android:label="Attack"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".BuyingActivity"
+            android:label="Buy"
+            android:theme="@style/AppTheme"/>
+
+        <activity android:name=".QuestInfoActivity"
+            android:label="QuestInformation"
             android:theme="@style/AppTheme"/>
 
 
