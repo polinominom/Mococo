@@ -130,6 +130,9 @@ public class DungeonActivity extends Activity {
             p.incFloorLimit();
 
         currentFloor++;
+
+        //save the player
+        Player.savePlayerToJSON(p,this);
     }
 
     public void updateListView()

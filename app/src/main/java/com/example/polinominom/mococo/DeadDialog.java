@@ -29,6 +29,7 @@ public class DeadDialog extends DialogFragment {
         theDialog.setMessage("A monster killed you during attack." +
                 "Game is restarting");
 
+        theDialog.setCancelable(false);
         theDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @Override

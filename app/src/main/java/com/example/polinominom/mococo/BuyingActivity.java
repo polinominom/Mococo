@@ -159,8 +159,9 @@ public class BuyingActivity extends Activity {
                 }
             }
 
-            //display new item before leave
+            //display new item and save the player before leave
             displayPlayersItemStatus();
+            Player.savePlayerToJSON(p,this);
 
             //go back
             goBackToShop();
@@ -182,5 +183,13 @@ public class BuyingActivity extends Activity {
         setResult(RESULT_OK,goBackToShop);
         finish();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent goingBackToShop= new Intent();
+        goingBackToShop.putExtra("Game_object",game);
+        setResult(RESULT_OK, goingBackToShop);
+        finish();
     }
 }

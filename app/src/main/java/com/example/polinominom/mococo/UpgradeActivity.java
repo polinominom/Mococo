@@ -8,9 +8,11 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 /**
  * Created by polinominom on 16.01.2016.
  */
+
 public class UpgradeActivity extends Activity{
     private Game game;
 
@@ -54,7 +56,7 @@ public class UpgradeActivity extends Activity{
 
         if(uPoint>0){
             p.setUpgradePoint(uPoint-1);
-            p.setStrength(p.getStrength() + 1);
+            p.setStrength(p.getPureStr() + 1);
             displayPlayerSIL();
         }
         else {
@@ -69,7 +71,7 @@ public class UpgradeActivity extends Activity{
 
         if(uPoint>0){
             p.setUpgradePoint(uPoint-1);
-            p.setIntelligent(p.getIntelligent() + 1);
+            p.setIntelligent(p.getPureInt() + 1);
             displayPlayerSIL();
         }
         else {
@@ -84,7 +86,7 @@ public class UpgradeActivity extends Activity{
 
         if(uPoint>0){
             p.setUpgradePoint(uPoint-1);
-            p.setLuck(p.getLuck() + 1);
+            p.setLuck(p.getPureLuck() + 1);
             displayPlayerSIL();
         }
         else {

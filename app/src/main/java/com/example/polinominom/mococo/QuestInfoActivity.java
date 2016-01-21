@@ -79,7 +79,10 @@ public class QuestInfoActivity extends Activity {
         {
             Player p = game.getPlayer();
             p.setQuest(selectedQuest);
+
+            //display quest info then save the player
             displayPlayerQuestInfo();
+            Player.savePlayerToJSON(p,this);
 
             Intent backToQuests = new Intent();
             backToQuests.putExtra("Game_object",game);
@@ -97,6 +100,14 @@ public class QuestInfoActivity extends Activity {
         backToQuests.putExtra("Game_object",game);
 
         setResult(RESULT_OK,backToQuests);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent goingBackToQuest = new Intent();
+        goingBackToQuest.putExtra("Game_object",game);
+        setResult(RESULT_OK, goingBackToQuest);
         finish();
     }
 

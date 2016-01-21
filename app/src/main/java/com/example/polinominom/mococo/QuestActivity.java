@@ -40,7 +40,6 @@ public class QuestActivity extends Activity {
 
         context = this;
 
-        displayCurrentQuest();
         addItemsToDifficultySpinner();
         addListenerToDifficultySpinner();
     }
@@ -84,7 +83,6 @@ public class QuestActivity extends Activity {
 
     private void createQuestList(String difficulty) {
         //empty the selected quest section
-        emptySelectedQuest();
 
         //create quests by difficulty
         final String[] questNames;
@@ -146,8 +144,6 @@ public class QuestActivity extends Activity {
                 startActivityForResult(questInfo, result);
 
 
-                //displayCurrentQuest();
-                //displaySelectedQuest(questNum);
 
             }
         });
@@ -170,53 +166,6 @@ public class QuestActivity extends Activity {
 
     }
 
-    public void displaySelectedQuest(int questNum)
-    {
-        TextView selectedQuestTextView = (TextView) findViewById(R.id.selected_quest_text_view_id);
-
-        //get selected and current quests
-
-
-        String selectedQuestMessage = "Selected Quest";
-        selectedQuestMessage += Quest.info(selectedQuest);
-
-        selectedQuestTextView.setText(selectedQuestMessage);
-    }
-
-    public void displayCurrentQuest()
-    {
-        TextView currentQuestTextView = (TextView) findViewById(R.id.current_quest_text_view_id);
-        Quest currentQuest = game.getPlayer().getQuest();
-
-        String currentQuestMessage = "Current Quest";
-        currentQuestMessage += Quest.info(currentQuest);
-
-        currentQuestTextView.setText(currentQuestMessage);
-    }
-
-    public void emptySelectedQuest()
-    {
-        TextView t = (TextView)findViewById(R.id.selected_quest_text_view_id);
-        t.setText("");
-        selectedQuest = null;
-    }
-
-
-    public void onTakeButtonClick(View view) {
-
-        if(selectedQuest == null)
-        {
-            Toast.makeText(QuestActivity.this,"You have to choose a quest first.",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        else
-        {
-            Player p = game.getPlayer();
-            p.setQuest(selectedQuest);
-            displayCurrentQuest();
-        }
-
-    }
 
     public void onProfileButtonClick(View view) {
 

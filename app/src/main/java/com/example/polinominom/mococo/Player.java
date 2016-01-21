@@ -1,8 +1,24 @@
 package com.example.polinominom.mococo;
 
+import android.content.Context;
 import android.preference.PreferenceActivity;
+import android.util.JsonWriter;
+import android.util.Log;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by polinominom on 17.01.2016.
@@ -82,6 +98,8 @@ public class Player implements Serializable {
         floorLimit = 1;
 
     }
+
+
     public void incFloorLimit()
     {
         this.floorLimit++;
@@ -246,6 +264,8 @@ public class Player implements Serializable {
     public int getStrength() {
         return strength+playerRace.getStrBonus();
     }
+
+
 
     public void setStrength(int strength) {
         this.strength = strength;
@@ -513,6 +533,278 @@ public class Player implements Serializable {
         int random = (int)(Math.random()*100);
         return random < getCritChance();
 
+    }
+
+    public int getPureMaxHealth()
+    {
+        return this.maxHealth;
+    }
+
+    public void setFloorLimit(int floorLimit) {
+        this.floorLimit = floorLimit;
+    }
+
+
+    public void setPhysicalDamage(int physicalDamage) {
+        this.physicalDamage = physicalDamage;
+    }
+
+    public void setPhysicalDefence(int physicalDefence) {
+        this.physicalDefence = physicalDefence;
+    }
+
+    public void setMagicalDamage(int magicalDamage) {
+        this.magicalDamage = magicalDamage;
+    }
+
+    public void setMagicalDefence(int magicalDefence) {
+        this.magicalDefence = magicalDefence;
+    }
+
+    public static Player loadPlayerFromJson(String jsonString) {
+
+        Player p = null;
+
+
+        try {
+            JSONObject json = new JSONObject(jsonString);
+
+            String name = json.getString("username");
+            String race = json.getString("race");
+            p = new Player(name,race);
+
+            int value = json.getInt("maxHealth");
+            p.setMaxHealth(value);
+            p.setCurrentHealth(p.getMaxHealth());
+
+            value = json.getInt("level");
+            p.setLevel(value);
+
+            value = json.getInt("currentExp");
+            p.setExp(value);
+
+            value = json.getInt("maxExp");
+            p.setMaxExp(value);
+
+            value = json.getInt("gold");
+            p.setGold(value);
+
+            value = json.getInt("upgradePoints");
+            p.setUpgradePoint(value);
+
+
+            value = json.getInt("floorLimit");
+            p.setFloorLimit(value);
+
+            value = json.getInt("physicalDamage");
+            p.setPhysicalDamage(value);
+
+            value = json.getInt("physicalDefence");
+            p.setPhysicalDefence(value);
+
+            value = json.getInt("magicalDamage");
+            p.setMagicalDamage(value);
+
+            value = json.getInt("magicalDefence");
+            p.setMagicalDefence(value);
+
+            value = json.getInt("critChance");
+            p.setCritChance((short)value);
+
+            value = json.getInt("critDamageBonus");
+            p.setCritDamageBonus(value);
+
+            value = json.getInt("str");
+            p.setStrength(value);
+
+            value = json.getInt("int");
+            p.setIntelligent(value);
+
+            value = json.getInt("luck");
+            p.setLuck(value);
+
+            //quests
+            String quest = json.getString("quest");
+            String[] tokens = quest.split("[ ]+");
+            Quest q;
+            if(tokens.length == 3) {
+                q = new Quest(String.format("%s %s", tokens[0], tokens[1]), tokens[2]);
+            }
+            else{
+                q = null;
+            }
+            p.setQuest(q);
+
+            //armor and weapons
+            String item;
+
+            item = json.getString("weapon");
+            if(!item.equals("none"))
+                p.setWeapon(new Weapon(item));
+
+            item = json.getString("helmet");
+            if(!item.equals("none"))
+                p.setWeapon(new Weapon(item));
+
+            item = json.getString("shoulder");
+            if(!item.equals("none"))
+                p.setWeapon(new Weapon(item));
+
+            item = json.getString("gloves");
+            if(!item.equals("none"))
+                p.setWeapon(new Weapon(item));
+
+            item = json.getString("leggings");
+            if(!item.equals("none"))
+                p.setWeapon(new Weapon(item));
+
+            item = json.getString("chest");
+            if(!item.equals("none"))
+                p.setWeapon(new Weapon(item));
+
+
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return p;
+
+    }
+
+    public int getPurePhysicalDamage()
+    {
+        return this.physicalDamage;
+    }
+    public int getPurePhysicalDefence()
+    {
+        return this.physicalDefence;
+    }
+
+    public int getPureMagicalDamage()
+    {
+        return this.magicalDamage;
+    }
+
+    public int getPureMagicalDefence()
+    {
+        return this.magicalDefence;
+    }
+
+    public short getPureCritChance()
+    {
+        return this.critChance;
+    }
+
+    public int getPureCritDamageBonus()
+    {
+        return this.critDamageBonus;
+    }
+
+    public int getPureStr()
+    {
+        return this.strength;
+    }
+
+    public int getPureInt()
+    {
+        return this.intelligent;
+    }
+
+    public int getPureLuck()
+    {
+        return this.luck;
+    }
+
+    public static void savePlayerToJSON(Player p,Context c)
+    {
+        File outputFile  = new File(c.getFilesDir(),"player_stats.json");
+        try {
+            OutputStream os = new FileOutputStream(outputFile);
+
+            JsonWriter writer = new JsonWriter(new OutputStreamWriter(os,"UTF-8"));
+            writer.beginObject();
+            writer.name("username").value(p.getName());
+            writer.name("race").value(p.getPlayerRace().getName());
+            writer.name("maxHealth").value(p.getPureMaxHealth());
+            writer.name("level").value(p.getLevel());
+            writer.name("currentExp").value(p.getExp());
+            writer.name("maxExp").value(1000);
+            writer.name("gold").value(p.getGold());
+            writer.name("upgradePoints").value(p.getUpgradePoint());
+            writer.name("floorLimit").value(p.getFloorLimit());
+
+            Quest q = p.getQuest();
+            if(q != null)
+                writer.name("quest").value(q.getType()+" "+q.getDifficulty());
+            else
+                writer.name("quest").value("none");
+
+
+            Weapon w = p.getWeapon();
+            if(w != null)
+                writer.name("weapon").value( w.getName());
+            else
+                writer.name("weapon").value("none");
+
+            Armor a = p.getHelmet();
+            if(a != null)
+                writer.name("helmet").value( a.getName());
+            else
+                writer.name("helmet").value("none");
+
+            a = p.getShoulder();
+            if(a != null)
+                writer.name("shoulder").value( a.getName());
+            else
+                writer.name("shoulder").value("none");
+
+            a = p.getGloves();
+            if(a != null)
+                writer.name("gloves").value( a.getName());
+            else
+                writer.name("gloves").value("none");
+
+            a = p.getLeggings();
+            if(a != null)
+                writer.name("leggings").value( a.getName());
+            else
+                writer.name("leggings").value("none");
+
+            a = p.getChest();
+            if(a != null)
+                writer.name("chest").value( a.getName());
+            else
+                writer.name("chest").value("none");
+
+
+            writer.name("physicalDamage").value(p.getPurePhysicalDamage());
+            writer.name("physicalDefence").value(p.getPurePhysicalDefence());
+
+            writer.name("magicalDamage").value(p.getPureMagicalDamage());
+            writer.name("magicalDefence").value(p.getPureMagicalDefence());
+
+            writer.name("critChance").value(p.getPureCritChance());
+            writer.name("critDamageBonus").value(p.getPureCritDamageBonus());
+
+            //str,int luck
+            writer.name("str").value(p.getPureStr());
+            writer.name("int").value(p.getPureInt());
+            writer.name("luck").value(p.getPureLuck());
+
+            writer.endObject();
+
+            writer.close();
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

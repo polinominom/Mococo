@@ -5,10 +5,14 @@ import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.security.AccessControlContext;
 
 /**
@@ -25,6 +29,7 @@ public class AttackActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_attack);
 
         getObjectsFromCalledActivity();
@@ -33,6 +38,8 @@ public class AttackActivity extends Activity {
 
 
     }
+
+
 
     public void getObjectsFromCalledActivity()
     {
@@ -96,9 +103,11 @@ public class AttackActivity extends Activity {
                 //game over create new game reset player and send through main activity
                 Player p = game.getPlayer();
                 Player newPlayer = new Player(p.getName(),p.getPlayerRace().getName());
+                Player.savePlayerToJSON(newPlayer,this);
                 Game g = new Game(newPlayer);
 
                 DialogFragment myFragment = new DeadDialog(g,this);
+                myFragment.setCancelable(false);
                 myFragment.show(getFragmentManager(), "theDialog");
 
             }
@@ -136,11 +145,15 @@ public class AttackActivity extends Activity {
                     }
                 }
 
+
+                //display and save player status
                 displayPlayerStatus();
+                savePlayerStatus();
+
+
 
                 //delete Monster from list
                 game.getFloorMonsters().remove(listPosition);
-
                 goBackToDungeon();
 
             }
@@ -153,6 +166,10 @@ public class AttackActivity extends Activity {
 
         }
     }
+    public void savePlayerStatus()
+    {
+        Player.savePlayerToJSON(game.getPlayer(),this);
+    }
 
     public void onFleeButtonClick(View view) {
         goBackToDungeon();
@@ -162,6 +179,14 @@ public class AttackActivity extends Activity {
     {
         //and return to dungeon
         //result the activity
+        Intent goingBackToDungeon = new Intent();
+        goingBackToDungeon.putExtra("Game_object",game);
+        setResult(RESULT_OK, goingBackToDungeon);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
         Intent goingBackToDungeon = new Intent();
         goingBackToDungeon.putExtra("Game_object",game);
         setResult(RESULT_OK, goingBackToDungeon);

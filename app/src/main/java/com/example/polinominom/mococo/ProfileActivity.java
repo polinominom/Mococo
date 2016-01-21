@@ -52,6 +52,8 @@ public class ProfileActivity extends Activity {
                 p.setCurrentHealth(p.getMaxHealth());
                 p.setGold(p.getGold() - 1);
                 setInformationToTextView();
+                //save the player after heal
+                Player.savePlayerToJSON(p,this);
 
             }
             else

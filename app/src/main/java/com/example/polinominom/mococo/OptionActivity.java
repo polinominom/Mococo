@@ -16,23 +16,31 @@ import android.widget.Spinner;
  * Created by polinominom on 15.01.2016.
  */
 public class OptionActivity extends AppCompatActivity {
+
     //settings must be pass through called activity because of player's changed attributes
     private Game game;
-    private String newUserName;
     private String newUserRace;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
-        Intent calledActivity = getIntent();
 
         //set game
         getGameFromCalledActivity();
 
+        addPlayerNameToEditText();
         addItemsToRaceSpinner();
         addListenerToRaceSpinner();
 
+
+    }
+
+    public void addPlayerNameToEditText()
+    {
+        EditText playerName = (EditText)findViewById(R.id.edit_profile_name_id);
+        playerName.setText(game.getPlayer().getName());
 
     }
 
@@ -86,6 +94,9 @@ public class OptionActivity extends AppCompatActivity {
         Player p = game.getPlayer();
         p.setPlayerRace(newUserRace);
         p.setName(newUserName);
+
+        //save the player
+        Player.savePlayerToJSON(p,this);
 
         Intent goingBack = new Intent(this,MainActivity.class);
         goingBack.putExtra("Game_object", game);
