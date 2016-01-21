@@ -1,0 +1,32 @@
+{
+  "username":"player",
+  "race":"Assassin",
+  "maxHealth":100,
+  "level":1,
+  "currentExp":0,
+  "maxExp":1000,
+  "gold":0,
+  "upgradePoints":0,
+  "quest":"none",
+  "floorLimit":1,
+  "weapon":"Light Sword",
+  "helmet":"none",
+  "shoulder":"none",
+  "gloves":"none",
+  "leggings":"none",
+  "chest":"none",
+
+  "physicalDamage":10,
+  "physicalDefence":10,
+
+  "magicalDamage":10,
+  "magicalDefence":10,
+
+  "critChance":10,
+  "critDamageBonus":50,
+
+  "str":0,
+  "int":0,
+  "luck":0
+
+}
