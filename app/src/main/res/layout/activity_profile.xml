@@ -3,40 +3,19 @@
     android:orientation="vertical"
     android:gravity="top"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:rowCount="4">
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left"
-            android:layout_marginBottom="20dp">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/map_name"
-                android:onClick="onBackToMapFromProfileClick"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/town_name"
-                android:onClick="onBackToTownFromProfileClick"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dungeon_button_name"
-                android:onClick="onBackToDungeonFromProfileClick"/>
-
-        </LinearLayout>
+        android:rowCount="4"
+        android:columnCount="1"
+        android:id="@+id/gridLayoutProfile">
 
         <TextView
             android:layout_width="match_parent"
@@ -64,7 +43,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Heal"
+                android:text="@string/heal_button_name"
                 android:textColor="@color/colorPrimaryDark"
                 android:onClick="onHealClick"/>
         </LinearLayout>
@@ -72,5 +51,54 @@
 
 
     </GridLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:id="@+id/linear_button_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onProfileButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dungeon_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onDungeonButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_button_name"
+            android:onClick="onQuestButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_button_name"
+            android:onClick="onShopButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upgrade_button_name"
+            android:onClick="onUpgradeButtonClick"
+            android:background="@color/reddy" />
+
+    </LinearLayout>
 
 </RelativeLayout>

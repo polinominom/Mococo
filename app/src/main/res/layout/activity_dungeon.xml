@@ -9,15 +9,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    <GridLayout
+    <LinearLayout
         android:layout_width="220dp"
         android:layout_height="fill_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:orientation="vertical"
-        android:columnCount="1"
-        android:rowCount="4"
-        android:id="@+id/gridLayout">
+        android:id="@+id/gridLayout"
+        android:layout_alignParentBottom="true">
 
 
         <TextView
@@ -43,12 +42,14 @@
 
         <ListView
             android:layout_width="190dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:id="@+id/monster_list_id">
 
         </ListView>
 
-    </GridLayout>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="220dp"
@@ -88,45 +89,39 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/attack_button_name"
-            android:layout_gravity="bottom"
-            android:onClick="onAttackButtonClick"
-            android:textColor="@color/reddy"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/map_name"
-            android:layout_gravity="bottom"
-            android:onClick="onBackToMapFromDungeonClick"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="@string/profile_button_name"
-            android:onClick="onBackToProfileFromDungeonClick"
-            />
+            android:layout_gravity="bottom"
+            android:onClick="onProfileButtonClick"
+            android:background="@color/reddy"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/town_name"
-            android:onClick="onBackToTownFromDungeonClick"
-            />
+            android:text="@string/dungeon_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onDungeonButtonClick"
+            android:background="@color/reddy"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quest_button_name"
-            android:onClick="onBackToQuestFromDungeonClick" />
+            android:onClick="onQuestButtonClick"
+            android:background="@color/reddy"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_button_name"
+            android:onClick="onShopButtonClick"
+            android:background="@color/reddy"/>
 
-
-
-
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upgrade_button_name"
+            android:onClick="onUpgradeButtonClick"
+            android:background="@color/reddy" />
 
     </LinearLayout>
 

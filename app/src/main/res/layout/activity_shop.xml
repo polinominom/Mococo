@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,72 +12,30 @@
     tools:context="com.example.polinominom.mococo.MainActivity"
     android:weightSum="1"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:columnCount="1"
-        android:rowCount="7"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left|center">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/map_name"
-                android:onClick="onBackToMapFromShopClick"
-                android:id="@+id/back_to_map_from_shop_button_id"
-                android:background="@color/reddy"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/profile_button_name"
-                android:onClick="onBackToProfileFromShopClick"
-                android:id="@+id/back_to_prfile_from_shop_button_id"
-                android:background="@color/reddy"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/town_name"
-                android:onClick="onBackToTownFromShopClick"
-                android:id="@+id/back_to_town_from_shop_button_id"
-                android:background="@color/reddy"/>
-
-            <Button
-
-                android:id="@+id/buy_button_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:layout_marginLeft="10dp"
-                android:text="@string/buy_button_name"
-                android:onClick="onShopBuyClick"/>
-
-        </LinearLayout>
-
         <TextView
-            android:layout_width="220dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/gold_text_view"
             android:textSize="15sp"
             android:textStyle="italic" />
 
         <TextView
-            android:layout_width="220dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/choose_shop_type_name"
             android:textSize="25sp"
             android:textStyle="bold" />
         <Spinner
-            android:layout_width="220dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/shop_type_id"
             android:layout_marginBottom="30dp"/>
@@ -86,10 +45,12 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:text="@string/shop_list_name"/>
+
         <ListView
             android:cacheColorHint="#00000000"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="215dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:id="@+id/shop_list_id">
         </ListView>
 
@@ -115,6 +76,55 @@
 
         </LinearLayout>
 
-    </GridLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:id="@+id/linear_button_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onProfileButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dungeon_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onDungeonButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_button_name"
+            android:onClick="onQuestButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_button_name"
+            android:onClick="onShopButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upgrade_button_name"
+            android:onClick="onUpgradeButtonClick"
+            android:background="@color/reddy" />
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -10,75 +10,42 @@
     tools:context="com.example.polinominom.mococo.MainActivity"
     android:weightSum="1">
 
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="left"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/linearLayout">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/map_name"
-            android:onClick="onBackToMapFromUpgradeClick"
-            android:background="@color/reddy"/>
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/profile_button_name"
-            android:background="@color/reddy"
-            android:onClick="onBackToProfileFromUpgradeClick"/>
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/town_name"
-            android:background="@color/reddy"
-            android:onClick="onBackToTownFromUpgradeClick"/>
-
-    </LinearLayout>
-
-
-
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:columnCount="2"
         android:rowCount="3"
         android:orientation="vertical"
-        android:layout_below="@+id/linearLayout">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/upgrade_points_name"
-            android:id="@+id/upgrade_player_isl"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_marginBottom="50dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/upgrade_button_name"
             android:textSize="45sp"
-            android:layout_marginBottom="45dp"
+            android:layout_marginBottom="25dp"
             android:textStyle="bold"
-            android:layout_row="1"
+            android:layout_row="0"
             android:layout_column="0" />
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upgrade_points_name"
+            android:id="@+id/upgrade_player_isl"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:layout_marginBottom="25dp"/>
+
 
         <LinearLayout
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="left"
+            android:layout_marginTop="15dp"
             android:layout_row="2"
             android:layout_column="0">
             <TextView
@@ -87,7 +54,7 @@
                 android:text="@string/str_status_name"
                 android:textSize="15sp"
                 android:textStyle="italic"
-                android:layout_marginBottom="45dp"
+                android:layout_marginBottom="25dp"
                 android:id="@+id/upgrade_strength_text_view"/>
 
             <TextView
@@ -96,7 +63,7 @@
                 android:text="@string/int_status_name"
                 android:textSize="15sp"
                 android:textStyle="italic"
-                android:layout_marginBottom="45dp"
+                android:layout_marginBottom="25dp"
                 android:id="@+id/upgrade_intelligent_text_view"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -104,7 +71,6 @@
                 android:text="@string/luck_status_name"
                 android:textSize="15sp"
                 android:textStyle="italic"
-                android:layout_marginBottom="45dp"
                 android:id="@+id/upgrade_luck_text_view"/>
 
 
@@ -123,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buy Str"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="5dp"
                 android:onClick="onBuyStrClick"
                 android:padding="0dp"/>
 
@@ -131,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Buy Int"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="5dp"
                 android:onClick="onBuyIntClick"
                 android:padding="0dp"/>
 
@@ -140,12 +106,60 @@
                 android:layout_height="wrap_content"
                 android:text="Buy Luck"
                 android:padding="0dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="5dp"
                 android:onClick="onBuyLuckClick"/>
-
 
         </LinearLayout>
 
     </GridLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        android:id="@+id/linear_button_layout"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onProfileButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dungeon_button_name"
+            android:layout_gravity="bottom"
+            android:onClick="onDungeonButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quest_button_name"
+            android:onClick="onQuestButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop_button_name"
+            android:onClick="onShopButtonClick"
+            android:background="@color/reddy"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upgrade_button_name"
+            android:onClick="onUpgradeButtonClick"
+            android:background="@color/reddy" />
+
+    </LinearLayout>
 
 </RelativeLayout>

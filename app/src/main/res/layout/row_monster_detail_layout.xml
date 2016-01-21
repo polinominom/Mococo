@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_gravity="center|top"
-    tools:context="com.example.polinominom.messingaround.MainActivity">
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginLeft="10dp"
-        android:src="@drawable/dot"
-        android:id="@+id/image1"/>
+        android:src="@drawable/weapon_icon"
+        android:id="@+id/wapon_icon_id"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/monster_information"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:padding="10dp"/>
-
+        android:id="@+id/weapon_name"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        android:padding="10dp"
+        android:text="WEAPON"/>
 </LinearLayout>
