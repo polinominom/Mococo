@@ -42,5 +42,9 @@
     <string name="full_health_buy_text_view_name">Full Health: 1 Gold</string>
     <string name="upgrade_points_name">Upgrade Points: </string>
     <string name="asfdgadg">Upgrade Points: </string>
+    <string name="howToPlayTextViewName">Kill monsters. Level up. Clear dungeon floors.</string>
+    <string name="heal_button_name">Heal</string>
+    <string name="flee_button_name">Flee</string>
+    <string name="leave">Leave</string>
 
 </resources>
